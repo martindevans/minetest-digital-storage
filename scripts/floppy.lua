@@ -88,6 +88,7 @@ local function register_drive()
         },
         groups = { dig_immediate = 2 },
 
+        on_rotate = function(pos, node, player, mode, new_param2) return true; end
         on_construct = on_construct,
         allow_node_data_inventory_put = only_allow_floppy_disk_put,
         on_receive_fields = on_receive_fields,
