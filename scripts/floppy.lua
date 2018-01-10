@@ -60,19 +60,19 @@ local function only_allow_floppy_disk_put(pos, listname, index, stack, player)
 end
 
 local function on_construct(pos)
-    local node_ = minetest.get_node_(pos);
+    local node = minetest.get_meta(pos);
 
-    local inv = node_:get_inventory();
+    local inv = node:get_inventory();
     inv:set_size("disk", 1);
 
-    node_:set_string("formspec", "field[channel;Channel;${channel}]")
+    node:set_string("formspec", "field[channel;Channel;${channel}]")
 end
 
 local function on_receive_fields (pos, formname, fields, sender)
     if fields.channel then
-        local node_ = minetest.get_node_(pos);
-        node_:set_string("channel", fields.channel);
-        node_:set_string("formspec", "invsize[8,6;]list[context;disk;0,0;1,1;]list[current_player;main;0,1;8,5;]");
+        local node = minetest.get_meta(pos);
+        node:set_string("channel", fields.channel);
+        node:set_string("formspec", "invsize[8,6;]list[context;disk;0,0;1,1;]list[current_player;main;0,1;8,5;]");
     end
 end
 
@@ -96,6 +96,15 @@ local function register_drive()
             effector = {
                 action = on_digiline_receive
             }
+        }
+    });
+    
+    minetest.register_craft({
+        output = names.floppy_drive(),
+        recipe = {
+            { "default:stone",  "default:stone",        "default:stone" },
+            { "default:stone",  "default:mese_crystal", "default:stone" },
+            { "default:stone",  "default:stone",        "default:stone" },
         }
     });
 end
