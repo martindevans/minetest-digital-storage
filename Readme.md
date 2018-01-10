@@ -2,6 +2,8 @@
 
 This mod for [Minetest](https://www.minetest.net/) adds in persistent storage accessible with [Digilines](https://github.com/minetest-mods/digilines).
 
+To install the mod click Clone or download in Github and "Download Zip". Extract into the minetest mods directory and rename the directory to `digital_storage`.
+
 ### Example Usage
 
 1. Place down a `digital_storage:floppy_drive` node.
